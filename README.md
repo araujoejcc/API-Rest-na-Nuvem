@@ -7,12 +7,12 @@ classDiagram
         -String name
         -String email
         -String password
-        +createList(name: String): List
-        +getLists(): List~List~
-        +removeList(id: int): boolean
+        +createTaskList(name: String): TaskList
+        +getTaskLists(): List~TaskList~
+        +removeTaskList(id: int): boolean
     }
     
-    class List {
+    class TaskList {
         -long id
         -String title
         -Date creationDate
@@ -46,7 +46,6 @@ classDiagram
         URGENT
     }
     
-
     class Notification {
         -long id
         -String message
@@ -55,9 +54,8 @@ classDiagram
         +markAsRead(): void
     }
     
-    User "1" *-- "1" List : owns
-    List "1" -- "0..*" Task : contains
-
+    User "1" *-- "1" TaskList : owns
+    TaskList "1" -- "0..*" Task : contains
     Task "1" -- "0..*" Notification : generates
     User "1" -- "0..*" Notification : receives
 ```
